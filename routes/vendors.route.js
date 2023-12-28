@@ -1,8 +1,8 @@
 const express = require('express');
-const { authVendor } = require('../middleware/authProtect');
-const { addProduct } = require('../controllers/vendor/shop.vendor');
+const {  getCategory,postProduct } = require('../controllers/vendor/shop.vendor');
 const router = express.Router();
 
-router.get('/add-product',authVendor, addProduct);
+router.get('/get-categories', getCategory);
+router.post('/post-product', postProduct);
 
 module.exports= router;
