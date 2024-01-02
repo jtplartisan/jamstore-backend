@@ -17,10 +17,6 @@ const orderSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
-    category:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Category'
-    },
     orderItems:{
         type:[orderItemSchema]
     },

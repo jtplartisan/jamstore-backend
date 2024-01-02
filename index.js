@@ -4,14 +4,18 @@ require('dotenv').config()
 const PORT = process.env.PORT || 3000;
 const authRoute = require('./routes/Auth.route');
 const vendorRoute = require('./routes/vendors.route');
-
+const cors = require('cors');
 const usersRoute = require('./routes/users.route');
 const { DbConnect } = require('./config/db.config');
 const { Category } = require('./models/Categories.model');
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+const morgan = require('morgan');
 
+app.use(express.json())
+
+app.use(morgan('dev'));
+app.use(express.urlencoded({extended:true}))
+app.use(cors()) 
 DbConnect()
 app.use('/api/auth',authRoute)
 app.use('/api/users',usersRoute)

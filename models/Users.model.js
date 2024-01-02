@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema({
       trim: true,
       minlength: 10,
       maxlength: 10,
-      match: /^[0-9]{10}$/, 
+      match: /^[0-9]{10}$/,   default: null,
     },
     shopCategory: {
       type: mongoose.Schema.Types.ObjectId,

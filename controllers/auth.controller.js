@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
       shopCategory, 
     } = req.body;
 
-  
+  console.log(req.body);
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email Already Registered!' });
@@ -81,7 +81,7 @@ exports.login= async (req,res)=>{
                 process.env.JWT_SECRET, 
                 { expiresIn: '1d' }
                 );
-               return res.status(201).json({ token, userName: user.username,email:user.email,phone:user.phone,alternatePhone:user?.alternatePhone , shopName:user.shopName,shopCategory:user.shopCategory});
+               return res.status(201).json({ token,id:user._id, userName: user.username,email:user.email,phone:user.phone,alternatePhone:user?.alternatePhone , shopName:user.shopName,shopCategory:user.shopCategory});
             }
 else{
     res.status(401).json({ message: 'Wrong password' });
